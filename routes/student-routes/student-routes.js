@@ -9,6 +9,8 @@ router.get('/getAllStudent', studentController.getAllStudent)
 
 router.get('/getSingleStudent/:id', studentController.getSingleStudent)
 
+router.get('/getStudentByName/:studentName', studentController.getStudentByName)
+
 router.post('/addStudent',authenticateJWT, studentController.addStudent)
 
 router.put('/updateStudent/:id',authenticateJWT, studentController.updateStudent)

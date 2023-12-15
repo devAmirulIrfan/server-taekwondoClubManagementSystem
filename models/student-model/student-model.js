@@ -39,6 +39,20 @@ async function getSingleStudent(studentId) {
     return rows[0]; // Return the first (and only) result, as it's a single student
 }
 
+async function getStudentsByName(studentName) {
+  const [rows] = await pool.execute(`
+    SELECT s.id, s.studentName, c.centerName, g.gradeName, p.parentName
+    FROM student AS s
+    INNER JOIN grade AS g ON s.gradeId = g.id
+    INNER JOIN parent AS p ON s.parentId = p.id
+    INNER JOIN center AS c ON p.centerId = c.id
+    WHERE s.studentName LIKE ?
+    LIMIT 5
+  `, [`%${studentName}%`]);
+
+  return rows;
+}
+
 
 async function addStudent(studentName, birthDate, gradeId, parentId, statusId) {
 
@@ -65,4 +79,4 @@ async function updateStudent(studentName, birthDate, gradeId, parentId, statusId
   }
 
 
-module.exports = {getAllStudent, getSingleStudent, addStudent, updateStudent}
+module.exports = {getAllStudent, getSingleStudent, addStudent, updateStudent, getStudentsByName}

@@ -22,6 +22,18 @@ async function getSingleStudent(req, res){
     }
 }
 
+async function getStudentByName(req, res){
+
+    const studentName = req.params.studentName
+    try{
+        const student = await studentModel.getStudentsByName(studentName);
+        res.status(200).json(student)
+    }
+    catch(err){
+        res.status(500).send("Error fetching student")
+    }
+}
+
 
 async function addStudent(req, res){
 
@@ -61,4 +73,4 @@ async function updateStudent(req, res){
     }
 }
 
-module.exports = {getAllStudent, getSingleStudent, addStudent, updateStudent}
+module.exports = {getAllStudent, getSingleStudent, addStudent, updateStudent, getStudentByName}
