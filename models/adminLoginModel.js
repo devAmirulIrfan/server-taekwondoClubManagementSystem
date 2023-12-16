@@ -1,8 +1,8 @@
 const mysql = require('mysql2/promise');
 
-const  ppp = require('../connection/dbConnection')
+const conn = require('../connection/dbConnection')
 
-const pool = ppp.pool
+const pool = conn.tkdClubManagementDbConnection
 
 const jwt = require('jsonwebtoken');
 
