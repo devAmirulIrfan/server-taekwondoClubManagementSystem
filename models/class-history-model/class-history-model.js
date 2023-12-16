@@ -10,7 +10,7 @@ async function getAllClassHistory(){
     const [rows] = await pool.execute(`
     SELECT 
     ch.id,
-    ch.date, 
+    DATE_FORMAT(ch.date, '%d-%m-%Y') date,
     d.dayName as day, 
     c.startTime, 
     c.endTime, 
@@ -26,7 +26,7 @@ async function getAllClassHistory(){
 
     ORDER BY
 
-    ch.date, c.dayId, c.startTime
+    ch.date, c.dayId, c.startTime DESC
     `
     )
     return rows
@@ -65,7 +65,7 @@ async function addClass(classId, date){
     await pool.execute(
         `
         INSERT INTO classHistory (classId, date)
-        VALUES (?, ?)
+        VALUES (?, DATE_ADD(?, INTERVAL 1 DAY))
         `,
         [classId, date]
     );
