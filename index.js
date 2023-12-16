@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyparser = require('body-parser');
-const tshirtRoutes = require('./routes/tshirtRoutes');
+// const tshirtRoutes = require('./routes/tshirtRoutes');
 const adminLoginRoutes = require('./routes/adminRoutes')
 const gradeRoutes = require('./routes/grade-routes/grade-routes')
 const centerRoutes = require('./routes/center-routes/center-routes')
@@ -19,7 +19,7 @@ app.use(bodyparser.json());
 app.use(cors())
 
 
-app.use('', tshirtRoutes);
+// app.use('', tshirtRoutes);
 app.use('', adminLoginRoutes)
 app.use('', gradeRoutes)
 app.use('', centerRoutes, studentRoutes)
