@@ -6,7 +6,7 @@ async function getAllCenter(req, res){
         res.status(200).json(centers)
     }
     catch(err){
-        res.status(500).send("Error fetching grades")
+        res.status(500).send(err)
     }
 }
 
