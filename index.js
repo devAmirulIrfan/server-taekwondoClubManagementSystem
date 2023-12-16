@@ -9,6 +9,7 @@ const parentRoutes = require('./routes/parent-routes/parent-route')
 const statusRoutes = require('./routes/status-routes/status-routes')
 const classRoutes = require('./routes/class-routes/class-routes')
 const classHistoryRoutes = require('./routes/class-history-routes/class-history-routes')
+const studentAttendanceRoutes = require('./routes/student-attendance-routes/student-attendance-routes')
 const cors = require('cors');
 
 const jwt = require('jsonwebtoken');
@@ -27,6 +28,7 @@ app.use('', parentRoutes)
 app.use('', statusRoutes)
 app.use('', classRoutes)
 app.use('', classHistoryRoutes)
+app.use('', studentAttendanceRoutes)
 
 
 
