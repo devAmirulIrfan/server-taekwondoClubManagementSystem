@@ -11,7 +11,7 @@ async function getAllStudent() {
     SELECT
       s.id,
       s.studentName,
-      DATE_FORMAT(s.birthDate, '%d-%m-%Y') AS birthDate,
+      DATE_FORMAT(s.birthDate, '%Y-%m-%d') AS birthDate,
       c.centerName,
       s.gradeId,
       g.gradeName,

@@ -10,7 +10,7 @@ async function getAllClassHistory(){
     const [rows] = await pool.execute(`
     SELECT 
     ch.id,
-    DATE_FORMAT(ch.date, '%d-%m-%Y') date,
+    DATE_FORMAT(ch.date, '%Y-%m-%d') date,
     d.dayName as day, 
     c.startTime, 
     c.endTime, 
