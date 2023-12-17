@@ -6,7 +6,7 @@ const router = express.Router();
 const studentAttendanceController = require('../../controllers/student-attendance-controller/student-attendance-controller')
 
 
-router.get('/getAttendanceList/:date/:classId', studentAttendanceController.getStudentAttendance)
+router.get('/getAttendanceList', studentAttendanceController.getStudentAttendance)
 
 router.post('/addStudentAttendance', studentAttendanceController.addStudentAttendance)
 

@@ -26,7 +26,7 @@ async function getAllClassHistory(){
 
     ORDER BY
 
-    ch.date, c.dayId, c.startTime DESC
+    date DESC
     `
     )
     return rows

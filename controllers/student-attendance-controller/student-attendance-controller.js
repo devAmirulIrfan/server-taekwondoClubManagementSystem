@@ -2,11 +2,14 @@ const studentAttendanceModel = require('../../models/student-attendance-model/st
 
 
 async function getStudentAttendance(req, res){
-    const date = req.params.date
-    const classId = req.params.classId
+    
+    const date = req.query.date
+    const classHistoryId = req.query.classHistoryId
+
+    console.log(date, classHistoryId)
 
     try{
-        const attendance = await studentAttendanceModel.attendanceList(date, classId)
+        const attendance = await studentAttendanceModel.attendanceList(date, classHistoryId)
         res.status(200).json(attendance)
     }
     catch(err){
@@ -19,11 +22,11 @@ async function getStudentAttendance(req, res){
 async function addStudentAttendance(req,res){
 
     const date = req.body.date
-    const classId = req.body.classId
+    const classHistoryId = req.body.classHistoryId
     const studentId = req.body.studentId
 
     const studentExist = await studentAttendanceModel.checkIfStudentExist(studentId)
-    const attendanceExist = await studentAttendanceModel.checkIfAttendanceExist(date, classId, studentId)
+    const attendanceExist = await studentAttendanceModel.checkIfAttendanceExist(date, classHistoryId, studentId)
 
     if(!studentExist){
         res.status(403).send('invalid QR record')
@@ -36,7 +39,7 @@ async function addStudentAttendance(req,res){
     }
 
     try{
-        await studentAttendanceModel.addAttendance(date, classId, studentId)
+        await studentAttendanceModel.addAttendance(date, classHistoryId, studentId)
         res.status(200).json('success')
     }
     catch{
