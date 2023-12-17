@@ -32,7 +32,7 @@ async function addAttendance(date, classHistoryId, studentId){
         INSERT INTO studentAttendance (date, classHistoryId, studentId)
         VALUES (?, ?, ?)
         `,
-        [date, classId, studentId]
+        [date, classHistoryId, studentId]
     );
 }
 
