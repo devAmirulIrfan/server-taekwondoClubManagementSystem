@@ -10,13 +10,17 @@ const statusRoutes = require('./routes/status-routes/status-routes')
 const classRoutes = require('./routes/class-routes/class-routes')
 const classHistoryRoutes = require('./routes/class-history-routes/class-history-routes')
 const studentAttendanceRoutes = require('./routes/student-attendance-routes/student-attendance-routes')
-const cors = require('cors');
+const corsOptions = {
+  origin: ['https://client-taekwondo-club-management-system.vercel.app', 'http://localhost:8080'],
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
+app.use(cors(corsOptions));
 const jwt = require('jsonwebtoken');
 const app = express();
 const PORT = 8080;
 app.use(bodyparser.json());
-app.use(cors())
+
 
 
 // app.use('', tshirtRoutes);
