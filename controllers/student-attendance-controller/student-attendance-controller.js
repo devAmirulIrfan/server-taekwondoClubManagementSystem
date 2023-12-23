@@ -13,7 +13,7 @@ async function getStudentAttendance(req, res){
         res.status(200).json(attendance)
     }
     catch(err){
-        res.status(0).send(err)
+        res.status(403).send(err)
         res.status(500).send('error fetching attendance list') 
     }
 
