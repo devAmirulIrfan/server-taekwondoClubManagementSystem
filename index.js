@@ -11,7 +11,7 @@ const classRoutes = require('./routes/class-routes/class-routes')
 const classHistoryRoutes = require('./routes/class-history-routes/class-history-routes')
 const studentAttendanceRoutes = require('./routes/student-attendance-routes/student-attendance-routes')
 const corsOptions = {
-  origin: ['https://client-taekwondo-club-management-system.vercel.app', 'http://localhost:8080'],
+  origin: ['https://client-taekwondo-club-management-system.vercel.app', 'http://localhost:4200'],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
