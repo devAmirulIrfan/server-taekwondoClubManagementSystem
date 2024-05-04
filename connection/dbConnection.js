@@ -13,28 +13,28 @@ const pool = mysql.createPool({
 
 //PRODUCTION
 
-const tkdClubManagementDbConnection = mysql.createPool({
-  host: "sql12.freemysqlhosting.net",
-  user: "sql12670739",
-  password: "S2dgdaZtQp",
-  database: "sql12670739",
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
-
-
-//DEVELOPMENT
-
 // const tkdClubManagementDbConnection = mysql.createPool({
-//   host: "localhost",
-//   user: "root",
-//   password: "",
-//   database: "tkdclubmanagementdb",
+//   host: "sql12.freemysqlhosting.net",
+//   user: "sql12670739",
+//   password: "S2dgdaZtQp",
+//   database: "sql12670739",
 //   waitForConnections: true,
 //   connectionLimit: 10,
 //   queueLimit: 0
 // });
+
+
+//DEVELOPMENT
+
+const tkdClubManagementDbConnection = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "tkdclubmanagementdb",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
 
 
 module.exports = {pool, tkdClubManagementDbConnection}

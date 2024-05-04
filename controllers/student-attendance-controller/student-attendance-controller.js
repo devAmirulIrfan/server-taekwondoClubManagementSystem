@@ -1,26 +1,36 @@
 const studentAttendanceModel = require('../../models/student-attendance-model/student-attendance-model')
 
+async function getAllStudentAttendance(req, res) {
+    try {
+        const attendance = await studentAttendanceModel.getAllAttendance()
+        res.status(200).json(attendance)
+    }
+    catch (err) {
+        res.status(403).send(err)
+        res.status(500).send('error fetching attendance list')
+    }
+}
 
-async function getStudentAttendance(req, res){
-    
+async function getStudentAttendance(req, res) {
+
     const date = req.query.date
     const classHistoryId = req.query.classHistoryId
 
     console.log(date, classHistoryId)
 
-    try{
+    try {
         const attendance = await studentAttendanceModel.attendanceList(date, classHistoryId)
         res.status(200).json(attendance)
     }
-    catch(err){
+    catch (err) {
         res.status(403).send(err)
-        res.status(500).send('error fetching attendance list') 
+        res.status(500).send('error fetching attendance list')
     }
 
 }
 
 
-async function addStudentAttendance(req,res){
+async function addStudentAttendance(req, res) {
 
     const date = req.body.date
     const classHistoryId = req.body.classHistoryId
@@ -29,40 +39,40 @@ async function addStudentAttendance(req,res){
     const studentExist = await studentAttendanceModel.checkIfStudentExist(studentId)
     const attendanceExist = await studentAttendanceModel.checkIfAttendanceExist(date, classHistoryId, studentId)
 
-    if(!studentExist){
+    if (!studentExist) {
         res.status(403).send('invalid QR record')
         return
     }
 
-    if(attendanceExist){
+    if (attendanceExist) {
         res.status(403).send('student attendance already exist')
         return
     }
 
-    try{
+    try {
         await studentAttendanceModel.addAttendance(date, classHistoryId, studentId)
         res.status(200).json('success')
     }
-    catch{
+    catch {
         res.status(500).send('error adding student attendance')
     }
 
 }
 
 
-async function deleteStudentAttendance(req, res){
-    
+async function deleteStudentAttendance(req, res) {
+
     const attendanceId = req.params.id
 
-    try{
+    try {
         await studentAttendanceModel.deleteAttendance(attendanceId)
         res.status(200).json('1 attendance record deleted')
     }
-    catch(err){
+    catch (err) {
         res.status(500).send('error deleting attendance')
     }
 
 }
 
 
-module.exports = {getStudentAttendance, addStudentAttendance, deleteStudentAttendance}
+module.exports = { getStudentAttendance, addStudentAttendance, deleteStudentAttendance, getAllStudentAttendance }

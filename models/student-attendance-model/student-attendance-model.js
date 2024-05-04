@@ -50,6 +50,18 @@ async function attendanceList(date, classHistoryId) {
     return rows;
 }
 
+async function getAllAttendance() {
+    const [rows] = await pool.execute(`
+        SELECT sa.id, sa.date, sa.classHistoryId, sa.studentId, s.studentName, c.centerName, g.gradeName, p.parentName
+        FROM studentAttendance as sa
+        INNER JOIN student s ON sa.studentId = s.id
+        INNER JOIN parent p ON s.parentId = p.id
+        INNER JOIN center c ON p.centerId = c.id
+        INNER JOIN grade g ON s.gradeId = g.id
+    `);
+    return rows;
+}
+
 
 async function deleteAttendance(attendanceId) {
     const [result] = await pool.execute(
@@ -58,4 +70,4 @@ async function deleteAttendance(attendanceId) {
     );
 }
 
-module.exports = {checkIfStudentExist, checkIfAttendanceExist, addAttendance, attendanceList, deleteAttendance}
+module.exports = {checkIfStudentExist, checkIfAttendanceExist, addAttendance, attendanceList, deleteAttendance, getAllAttendance}

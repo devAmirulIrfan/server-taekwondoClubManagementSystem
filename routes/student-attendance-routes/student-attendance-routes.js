@@ -5,6 +5,7 @@ const router = express.Router();
 
 const studentAttendanceController = require('../../controllers/student-attendance-controller/student-attendance-controller')
 
+router.get('/getAllAttendanceList', studentAttendanceController.getAllStudentAttendance)
 
 router.get('/getAttendanceList', studentAttendanceController.getStudentAttendance)
 

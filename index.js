@@ -10,6 +10,7 @@ const statusRoutes = require('./routes/status-routes/status-routes')
 const classRoutes = require('./routes/class-routes/class-routes')
 const classHistoryRoutes = require('./routes/class-history-routes/class-history-routes')
 const studentAttendanceRoutes = require('./routes/student-attendance-routes/student-attendance-routes')
+const sessionRoutes = require('./routes/session-routes/session-routes')
 const cors = require('cors');
 
 
@@ -31,6 +32,7 @@ app.use('', statusRoutes)
 app.use('', classRoutes)
 app.use('', classHistoryRoutes)
 app.use('', studentAttendanceRoutes)
+app.use('', sessionRoutes)
 
 
 
